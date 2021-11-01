@@ -8,14 +8,29 @@ import { InfoPagina } from '../interfaces/info-pagina.interface';
 export class InfoPaginaService {
 
   info:InfoPagina ={};
+  equipo : any = {};
   cargada = false;
 
   constructor(private http:HttpClient) {
-    this.http.get('assets/data/data-pagina.json')
-    .subscribe(resp =>{
+    this.cargarInfo();
+    this.cargarEquipo();
+   }
+   private cargarInfo(){
+     this.http.get('assets/data/data-pagina.json')
+    .subscribe((resp:InfoPagina) =>{
       this.cargada = true;
       this.info = resp;
       console.log(resp);
     });
+   }
+
+   private cargarEquipo(){
+    this.http.get('https://angulartest-a4574-default-rtdb.firebaseio.com/equipo.json')
+    .subscribe(resp =>{
+
+      this.equipo = resp;
+      console.log(resp);
+    });
+    
    }
 }
