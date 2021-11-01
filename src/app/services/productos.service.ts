@@ -25,7 +25,7 @@ export class ProductosService {
 
       this.http.get('https://angulartest-a4574-default-rtdb.firebaseio.com/productos_idx.json')
       .subscribe( (resp:any) => {
-        console.log(resp);
+        //console.log(resp);
         this.productos=resp;
         this.cargando=false;  
         //resolve();
@@ -55,7 +55,7 @@ export class ProductosService {
   }
 
   private filtrarProductos(termino:string){
-    console.log(this.productosFiltrado);
+    //console.log(this.productosFiltrado);
     this.productosFiltrado=[];
 
     termino=termino.toLocaleLowerCase();
